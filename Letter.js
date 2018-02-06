@@ -1,3 +1,5 @@
+var choices = /^[A-Za-z]+$/;	
+
 function Letter(character) {
 	//displays underlying character or placeholder depending if letter has been guessed
 	//should define:
@@ -9,25 +11,33 @@ function Letter(character) {
 	
 	//this.guessed = false;
 	
-	//A function that returns the underlying character if the letter has been guessed, or a placeholder (like an underscore) if the letter has not been guessed
+};
+
+//A function that returns the underlying character if the letter has been guessed, or a placeholder (like an underscore) if the letter has not been guessed
 	
-	//this.printLetter = function () {
-		//if (boonlean === true) {
-			//return this.character
-		//} 
-		//else {
-			//return '_';
-		//}
+//Letter.prototype.printLetter = function () {
+	//if (boonlean === true) {
+		//return this.character
+	//} 
+	//else {
+		//return '_';
 	//}
+//}
+
+//A function that takes a character as an argument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
 	
-	//A function that takes a character as an argument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
-	
-	//this.checkInput = function (userGuess) {
-		//for (var i = 0; i < gameWord.length; i++) {
+//Letter.prototype.checkInput = function (userGuess) {
+	//for (var i = 0; i < gameWord.length; i++) {
+		//if (userGuess.value.match(choices)) {
 			//if (userGuess === i) {
 				//boolean true
 				//call return underlying character function
 			//};
+		//}
+		//else {
+			//console.log('Please enter a valid letter.')
 		//};
-	//}
-};
+	//};
+//}
+
+module.exports = Letter;
