@@ -1,6 +1,9 @@
 var inquirer = require('inquirer');
-var word = require('Word.js');
-
+var word = require('./Word.js');
+var letter = require('./Letter.js');
+var lives = 10;
+var userGuess = null;
+var gameWord = null;
 
 var game = {
 	//stores random words
@@ -8,8 +11,10 @@ var game = {
 	//selects random word and uses word constructor to store it
 	wordSelect: function() {
 		for (var i = 0; i < game.gameWords.length; i++) {
-			var gameWord = game.gameWords[math.Floor(math.Random() * game.gameWords.length)];
+			gameWord = game.gameWords[Math.floor(Math.random() * game.gameWords.length)];
 			word.gameWord = gameWord;
+			letter.gameWord = gameWord;
+			letter.Letter.newWord();
 		};
 	},
 	//promtps the user for each guess
@@ -20,10 +25,24 @@ var game = {
       			name: 'userGuess',
       			message: 'Guess a letter.'		
 		  	}
-		])
+		]).then(function(guess){
+			if(lives > 0) {
+				letter.letterPerm.checkInput();
+				if (letter.letterPerm.guessed === false) {
+					lives--;
+					console.log('You have ' + lives + ' lives remaining.');
+				}
+				else {
+					letter.letterPerm.printLetter();
+					console.log('\nYou have ' + lives + ' lives remaining.')
+				};
+			};
+		});
 	}
-}
+};
+game.wordSelect();
+game.promptUser();
 
-//keeps track of user remaining guesses
+//need to code in game reset
 
-	//will need to push word to Word array 
+
